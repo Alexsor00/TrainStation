@@ -15,11 +15,11 @@ MonoBehaviour:
   isStayState: 0
   stayState: {fileID: 11400000, guid: 727d0bc6ab9e6f347b60b6ddbcc34e50, type: 2}
   onEnterActions:
-  - {fileID: 11400000, guid: 4bb1d67e3bb4e0a43971d02be2e3d1ba, type: 2}
+  - {fileID: 0}
   - {fileID: 11400000, guid: 07e735db433fb084f99cadbf34526164, type: 2}
   - {fileID: 11400000, guid: 2e0e30aba32b9f6498332dee2e934771, type: 2}
   - {fileID: 11400000, guid: 0c15ebae33418e44eadb54850de1b2dd, type: 2}
-  - {fileID: 11400000, guid: 7adb5f0bba0593443b790a9fc725e332, type: 2}
+  - {fileID: 0}
   - {fileID: 11400000, guid: f7ed2eb092d40bc49b542ddd561edbdc, type: 2}
   constantActions: []
   transitions:
