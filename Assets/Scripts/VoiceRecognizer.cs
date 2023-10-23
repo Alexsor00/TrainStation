@@ -40,6 +40,7 @@ public class VoiceRecognizer : MonoBehaviour
     }
     public void On()
     {
+		Debug.Log("Recongnize on");
 		print("Recognizer on");
 		dictationRecognizer.Start();
     }
@@ -51,11 +52,12 @@ public class VoiceRecognizer : MonoBehaviour
 
 	private void DictationRecognizer_DictationResult(string text, ConfidenceLevel confidence)
 	{
+		Debug.Log("DictationRecognizer_DictationResult");
 		dictationRecognizer.Start();
 
 		startedAnalysis = true;
 		SentenceAnalyzer.instance.Analyze(text);
-
+        
 		print(text + " " + confidence);
 	}
 

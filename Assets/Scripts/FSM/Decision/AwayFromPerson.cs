@@ -11,15 +11,11 @@ public class AwayFromPerson : FSMdecision
 
 	public override bool Decide(FSMcontroller controller)
 	{
-		if (AvatarDetector.instance.currentlyInteractingAvatar != null)
-		{
-			float calculatedDistance = Vector3.Distance(PlayerPosition.instance.position,
-									AvatarDetector.instance.currentlyInteractingAvatar.transform.position);
-
-			if (insideDistance) return calculatedDistance < distance;
-
-			else return calculatedDistance >= distance;
+		if(AvatarDetector.instance.DetectAvatar() != controller.gameObject){
+		 MicrophoneManager.instance.StartRecording();
+         return true;
 		}
-		else return false;
+		return false;
+
 	}
 }

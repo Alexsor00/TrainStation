@@ -9,10 +9,11 @@
     }
   ],
   "dependencies": {
+    "com.srcnalt.openai-unity": "https://github.com/srcnalt/OpenAI-Unity.git",
     "com.unity.collab-proxy": "1.2.16",
     "com.unity.ext.nunit": "1.0.6",
     "com.unity.ide.rider": "1.1.4",
-    "com.unity.ide.vscode": "1.2.3",
+    "com.unity.ide.visualstudio": "https://github.com/needle-mirror/com.unity.ide.visualstudio.git",
     "com.unity.recorder": "2.5.4",
     "com.unity.render-pipelines.lightweight": "7.3.1",
     "com.unity.test-framework": "1.1.22",
@@ -55,5 +56,15 @@
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
     "com.unity.modules.xr": "1.0.0"
+  },
+  "lock": {
+    "com.srcnalt.openai-unity": {
+      "revision": "HEAD",
+      "hash": "5257a6f7e1e3c944fd6d8e1f668b33853d4890fa"
+    },
+    "com.unity.ide.visualstudio": {
+      "revision": "HEAD",
+      "hash": "b28f5a3cbf26211491a4f3db4561300da94383a9"
+    }
   }
 }
