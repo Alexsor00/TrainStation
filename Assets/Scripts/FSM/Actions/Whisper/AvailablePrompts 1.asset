@@ -12,5 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ca3446b2af3caf44b563b14c2b95027, type: 3}
   m_Name: AvailablePrompts 1
   m_EditorClassIdentifier: 
-  promptOptions: []
+  promptOptions:
+  - displayName: dfadsf
+    prompt: sdfsdf
+  - displayName: sdfsdf
+    prompt: sdfsf
   selectedPromptIndex: 0

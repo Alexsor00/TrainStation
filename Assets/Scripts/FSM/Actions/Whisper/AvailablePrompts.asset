@@ -12,4 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ca3446b2af3caf44b563b14c2b95027, type: 3}
   m_Name: AvailablePrompts
   m_EditorClassIdentifier: 
-  promptOptions: []
+  promptOptions:
+  - displayName: Vendedor de Tickets
+    prompt: aasas
+  - displayName: Seguridad
+    prompt: sassasas
+  - displayName: Viandante
+    prompt: asdasd
+  - displayName: "Empleado cafeter\xEDa"
+    prompt: sdsdfsdf
+  selectedPromptIndex: 0
