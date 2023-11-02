@@ -18,7 +18,6 @@ public class WhisperEditor : Editor
 
         int currentIndex = System.Array.IndexOf(displayNames, whisper.selectedPromptDisplayName);
         if (currentIndex == -1) currentIndex = 0;
-
         int newIndex = EditorGUILayout.Popup("Prompt", currentIndex, displayNames);
 
         if (currentIndex != newIndex)
