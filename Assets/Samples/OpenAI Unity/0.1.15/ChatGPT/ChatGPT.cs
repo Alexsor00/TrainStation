@@ -6,38 +6,51 @@ using System.Threading.Tasks;
 namespace OpenAI
 {
     public class ChatGPTService 
-{
-    private OpenAIApi openai = new OpenAIApi();
-    private List<ChatMessage> messages = new List<ChatMessage>();
-
-    public async Task<string> ProcessExternalText(string externalText, string prompt)
     {
-        var newMessage = new ChatMessage()
+        private OpenAIApi openai = new OpenAIApi();
+        private string conversationState;
+
+        public ChatGPTService(string initialPrompt)
         {
-            Role = "user",
-            Content = externalText
-        };
-        
-        if (messages.Count == 0) newMessage.Content = prompt + "\n" + externalText; 
-        messages.Add(newMessage);
-        // Complete the instruction 
-        var completionResponse = await openai.CreateChatCompletion(new CreateChatCompletionRequest()
-        {
-            Model = "gpt-3.5-turbo-0613",
-            Temperature = 0.3f,
-            MaxTokens = 15,
-            Messages = messages,
-        });
-            
-        if (completionResponse.Choices != null && completionResponse.Choices.Count > 0)
-        {
-            var message = completionResponse.Choices[0].Message;
-            return message.Content.Trim();
+            this.conversationState = initialPrompt;
         }
-        else
+
+        public async Task<string> ProcessExternalText(string externalText)
         {
-            return "No response from ChatGPT.";
+            var messages = new List<ChatMessage>
+            {
+                new ChatMessage()
+                {
+                    Role = "system",
+                    Content = conversationState
+                },
+                new ChatMessage()
+                {
+                    Role = "user",
+                    Content = externalText
+                }
+            };
+        Debug.Log("Generando el texto");
+            var completionResponse = await openai.CreateChatCompletion(new CreateChatCompletionRequest()
+            {
+                Model = "gpt-4",
+                Temperature = 0.3f,
+                MaxTokens = 15,
+                Messages = messages,
+            });
+                  Debug.Log("Texto generado");
+      
+            if (completionResponse.Choices != null && completionResponse.Choices.Count > 0)
+            {
+                var response = completionResponse.Choices[0].Message.Content.Trim();
+                // Actualiza el estado de la conversación
+                conversationState += "\n" + externalText + "\n" + response;
+                return response;
+            }
+            else
+            {
+                return "No response from ChatGPT.";
+            }
         }
     }
-}
 }

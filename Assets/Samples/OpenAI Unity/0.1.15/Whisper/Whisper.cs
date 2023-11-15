@@ -13,7 +13,6 @@ namespace OpenAI
         public bool isMale = true;
          [SerializeField] private bool context = true;
         private readonly string fileName = "output.wav";
-        private readonly ChatGPTService chatGPTService = new ChatGPTService();
         private readonly TextToSpeech textToSpeech = new TextToSpeech();  // Referencia al componente TextToSpeech.
         public bool isRecording;
         private OpenAIApi openai = new OpenAIApi();
@@ -35,9 +34,14 @@ public Dictionary<string, string> promptsSinContexto = new Dictionary<string, st
    
         [HideInInspector]
         public string prompt;  // El prompt seleccionado para usar
+
+private ChatGPTService chatGPTService;
+
 private void Awake()
 {
-    Debug.Log(selectedPromptDisplayName);
+ OnValidate(); 
+ chatGPTService = new ChatGPTService(prompt); 
+
 }
         private void OnValidate()
         {
@@ -93,9 +97,8 @@ private void Awake()
         // Solicitar transcripción al servicio OpenAI
         var res = await openai.CreateAudioTranscription(req);
         Debug.Log(res.Text);
-        Debug.Log("prompt" + prompt);
         // Obtener respuesta del modelo de chat usando el texto transcribido
-        string chatGPTResponse = await chatGPTService.ProcessExternalText(res.Text, prompt);
+        string chatGPTResponse = await chatGPTService.ProcessExternalText(res.Text);
         Debug.Log(chatGPTResponse);
     
        if(!context) {
